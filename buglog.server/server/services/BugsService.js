@@ -3,7 +3,7 @@ import { BadRequest, Forbidden } from '../utils/Errors'
 
 class BugsService {
   async getAllBugs(query = {}) {
-    const bugs = await dbContext.Bugs.populate('creator', 'name picture')
+    const bugs = await dbContext.Bugs.find(query).populate('creator', 'name picture')
     return bugs
   }
 
@@ -37,7 +37,7 @@ class BugsService {
     if (bug.creatorId !== userId) {
       throw new Forbidden('You Cannot delete another users Bug')
     }
-    await this.editBug({ _id: id, creatorId: userId }, { closed: true }, { new: true })
+    await dbContext.Bugs.findOneAndUpdate({ _id: id, creatorId: userId, closed: false }, { closed: true }, { new: true })
     return 'Successfully Closed'
   }
 }

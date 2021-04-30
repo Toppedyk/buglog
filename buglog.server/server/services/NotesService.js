@@ -16,7 +16,7 @@ class NotesService {
     if (note.creatorId !== userId) {
       throw new Forbidden('You Cannot delete another users Note')
     }
-    await dbContext.Notes.findOneAndDelete(id)
+    await dbContext.Notes.findOneAndDelete({ _id: id })
     return 'Successfully Deleted'
   }
 }

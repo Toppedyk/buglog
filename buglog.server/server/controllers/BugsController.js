@@ -18,7 +18,6 @@ export class BugsController extends BaseController {
 
   async getAllBugs(req, res, next) {
     try {
-      req.body.creatorId = req.userInfo.id
       const bugs = await bugsService.getAllBugs(req.query)
       return res.send(bugs)
     } catch (error) {
