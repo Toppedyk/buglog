@@ -39,14 +39,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">
-                1
-              </th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
+            <Bug v-for="bug in state.bugs" :key="bug.id" :bug="bug" />
           </tbody>
         </table>
       </div>
@@ -55,8 +48,28 @@
 </template>
 
 <script>
+import { computed, onMounted, reactive } from 'vue'
+import { AppState } from '../AppState'
+import { bugsService } from '../services/BugsService'
 export default {
-  name: 'Home'
+  name: 'Home',
+  setup() {
+    const state = reactive({
+      account: computed(() => AppState.account),
+      user: computed(() => AppState.user),
+      bugs: computed(() => AppState.bugs)
+    })
+    onMounted(async() => {
+      try {
+        await bugsService.getAllBugs()
+      } catch (error) {
+        Notification.toast('Error: ' + error, 'error')
+      }
+    })
+    return {
+      state
+    }
+  }
 }
 </script>
 
