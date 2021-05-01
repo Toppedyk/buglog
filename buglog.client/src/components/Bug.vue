@@ -12,7 +12,9 @@
         <span>Closed</span>
       </p>
     </td>
-    <td>last modified</td>
+    <td>
+      {{ new Date(bug.updatedAt).toLocaleString("en",options) }}
+    </td>
   </tr>
 </template>
 
@@ -30,6 +32,11 @@ export default {
   setup(props) {
     const router = useRouter()
     return {
+      options: {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      },
       bugDetails() {
         try {
           router.push({ name: 'BugDetailsPage', params: { id: props.bug.id } })

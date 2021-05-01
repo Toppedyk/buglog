@@ -7,6 +7,10 @@ class BugsService {
     AppState.bugs = res.data
   }
 
+  async filterBugs() {
+    AppState.bugs = AppState.bugs.filter(b => b.closed === false)
+  }
+
   async getBugById(id) {
     const bug = await api.get(`api/bugs/${id}`)
     AppState.activeBug = bug.data

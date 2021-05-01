@@ -14,7 +14,8 @@
       </div>
       <div class="col-6 d-flex justify-content-end align-items-end">
         <div class="d-flex align-items-baseline">
-          <input type="checkbox">
+          <input type="checkbox" @change="filterBugs" v-if="state.elem === true">
+          <input type="checkbox" @change="filterBugs" v-else checked>
           <p>Hide Closed</p>
         </div>
       </div>
@@ -51,10 +52,12 @@
 import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { bugsService } from '../services/BugsService'
+import Notification from '../utils/Notification'
 export default {
   name: 'Home',
   setup() {
     const state = reactive({
+      elem: true,
       account: computed(() => AppState.account),
       user: computed(() => AppState.user),
       bugs: computed(() => AppState.bugs)
@@ -67,7 +70,20 @@ export default {
       }
     })
     return {
-      state
+      state,
+      async filterBugs() {
+        try {
+          if (state.elem === true) {
+            await bugsService.filterBugs()
+            state.elem = false
+          } else {
+            await bugsService.getAllBugs()
+            state.elem = true
+          }
+        } catch (error) {
+          Notification.toast('Error: ' + error, 'error')
+        }
+      }
     }
   }
 }

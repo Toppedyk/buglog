@@ -11,6 +11,11 @@ class NotesService {
     await api.post('api/notes', newNote)
     this.getNotesByBugId(id)
   }
+
+  async deleteNote(id, bugId) {
+    await api.delete(`api/notes/${id}`)
+    this.getNotesByBugId(bugId)
+  }
 }
 
 export const notesService = new NotesService()
