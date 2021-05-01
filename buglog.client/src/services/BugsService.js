@@ -7,9 +7,20 @@ class BugsService {
     AppState.bugs = res.data
   }
 
+  async getBugById(id) {
+    const bug = await api.get(`api/bugs/${id}`)
+    AppState.activeBug = bug.data
+  }
+
   async createBug(newBug) {
     const res = await api.post('api/bugs', newBug)
     AppState.bugs.push(res.data)
+  }
+
+  async deleteBug(id) {
+    await api.delete(`api/bugs/${id}`)
+    this.getBugById(id)
+    this.getAllBugs()
   }
 }
 
