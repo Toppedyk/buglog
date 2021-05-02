@@ -1,10 +1,11 @@
 import { AppState } from '../AppState'
 import { api } from './AxiosService'
+import router from '../router.js'
 
 class BugsService {
   async getAllBugs() {
     const res = await api.get('api/bugs')
-    AppState.bugs = res.data
+    AppState.bugs = res.data.reverse()
   }
 
   async filterBugs() {
@@ -18,7 +19,8 @@ class BugsService {
 
   async createBug(newBug) {
     const res = await api.post('api/bugs', newBug)
-    AppState.bugs.push(res.data)
+    this.getAllBugs()
+    router.push({ name: 'BugDetailsPage', params: { id: res.data.id } })
   }
 
   async deleteBug(id) {

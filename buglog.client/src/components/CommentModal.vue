@@ -45,6 +45,7 @@ import { AppState } from '../AppState'
 import Notification from '../utils/Notification'
 import { notesService } from '../services/NotesService'
 import { useRoute } from 'vue-router'
+import $ from 'jquery'
 export default {
   name: 'CommentModal',
   setup() {
@@ -61,6 +62,7 @@ export default {
           state.newNote.bug = route.params.id
           await notesService.createNote(state.newNote, route.params.id)
           state.newNote = {}
+          $('#ReportBugModal').modal('hide')
           Notification.toast('Succesfully created', 'success')
         } catch (error) {
           Notification.error('Error: ' + error, 'error')

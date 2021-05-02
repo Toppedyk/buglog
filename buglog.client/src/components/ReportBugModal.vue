@@ -48,6 +48,7 @@ import { computed, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { bugsService } from '../services/BugsService'
 import Notification from '../utils/Notification'
+import $ from 'jquery'
 export default {
   name: 'ReportBugModal',
   setup() {
@@ -63,6 +64,7 @@ export default {
           await bugsService.createBug(state.newBug)
           Notification.toast('Successfully Created', 'success')
           state.newBug = {}
+          $('#ReportBugModal').modal('hide')
         } catch (error) {
           Notification.toast('Error' + error, 'error')
         }

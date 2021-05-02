@@ -3,13 +3,13 @@
     <th scope="row">
       {{ bug.title }}
     </th>
-    <td>{{ bug.creator.name }}</td>
+    <td><img :src="bug.creator.picture" alt="creator image" class="rounded-circle small-img">{{ bug.creator.name }}</td>
     <td>
       <p v-if="bug.closed==false">
-        <span>Open</span>
+        <span class="open">Open</span>
       </p>
       <p v-else>
-        <span>Closed</span>
+        <span class="closed">Closed</span>
       </p>
     </td>
     <td>
@@ -51,5 +51,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.open{
+  color: green
+}
+.closed{
+  color:red;
+}
+
+.small-img{
+  object-fit: cover;
+  max-height: 2rem;
+}
 
 </style>

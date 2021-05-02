@@ -6,17 +6,19 @@
     <div class="row">
       <div class="col-6 d-flex flex-column">
         <h1>{{ state.activeBug.title }}</h1>
-        <p>Reported By: <span>{{ state.activeBug.creator.name }}</span></p>
+        <p>Reported By: <img :src="state.activeBug.creator.picture" alt="Creators picture" class="rounded-circle small-img"> <span>{{ state.activeBug.creator.name }}</span></p>
       </div>
       <div class="col-6">
-        <button type="button" class="btn btn-danger" @click="deleteBug" v-if="state.activeBug.closed==false">
-          Close
-        </button>
+        <div v-if="state.activeBug.creator.id === state.account.id">
+          <button type="button" class="btn btn-danger" @click="deleteBug" v-if="state.activeBug.closed==false">
+            Close
+          </button>
+        </div>
         <p v-if="state.activeBug.closed==false">
-          Status: <span>Open</span>
+          Status: <span class="open">Open</span>
         </p>
         <p v-else>
-          Status: <span>Closed</span>
+          Status: <span class="closed">Closed</span>
         </p>
       </div>
     </div>
@@ -28,7 +30,7 @@
     <div class="row">
       <div class="col d-flex">
         <h3>Notes</h3>
-        <button type="button" class="btn btn-success ml-4" data-toggle="modal" data-target="#CommentModal">
+        <button type="button" class="btn btn-success ml-4" data-toggle="modal" data-target="#CommentModal" v-if="state.user.isAuthenticated">
           Add
         </button>
         <CommentModal />
@@ -73,6 +75,8 @@ export default {
     const state = reactive({
       loading: true,
       newNote: {},
+      user: computed(() => AppState.user),
+      account: computed(() => AppState.account),
       activeBug: computed(() => AppState.activeBug),
       notes: computed(() => AppState.notes)
     })
@@ -101,3 +105,18 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.open{
+  color: green
+}
+.closed{
+  color:red;
+}
+
+.small-img{
+  object-fit: cover;
+  max-height: 2rem;
+}
+
+</style>

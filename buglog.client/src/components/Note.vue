@@ -1,10 +1,11 @@
 <template>
   <tr class="Note">
     <th scope="row">
+      <img :src="note.creator.picture" alt="Creator Image" class="rounded-circle small-img">
       {{ note.creator.name }}
     </th>
     <td>{{ note.body }}</td>
-    <td>
+    <td v-if="note.creator.id === state.account.id">
       <i class="fa fa-trash" @click="deleteNote"> Delete</i>
     </td>
   </tr>
@@ -32,7 +33,10 @@ export default {
       state,
       async deleteNote() {
         try {
-          await notesService.deleteNote(props.note.id, props.note.bug)
+          const del = confirm('Are you sure you want delete this?')
+          if (del === true) {
+            await notesService.deleteNote(props.note.id, props.note.bug)
+          }
         } catch (error) {
           Notification.toast('Error: ' + error, 'error')
         }
@@ -44,5 +48,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.small-img{
+  object-fit: cover;
+  max-height: 2rem;
+}
 </style>
