@@ -1,7 +1,7 @@
 <template>
   <div class="home flex-grow-1 container-fluid">
     <div class="row mt-3 ">
-      <div class="col-6 d-flex justify-content-center">
+      <div class="col-12 col-lg-6 d-flex justify-content-center">
         <div class="d-flex align-items-end">
           <h1 class="mb-0">
             Current Bugs
@@ -12,7 +12,7 @@
           <ReportBugModal />
         </div>
       </div>
-      <div class="col-6 d-flex justify-content-center align-items-end">
+      <div class="col-12 col-lg-6 d-flex justify-content-center align-items-end">
         <div class="d-flex align-items-baseline">
           <input type="checkbox" @change="filterBugs" v-if="state.elem === true">
           <input type="checkbox" @change="filterBugs" v-else checked>
@@ -23,8 +23,8 @@
       </div>
     </div>
     <div class="row justify-content-center mt-3">
-      <div class="col-10 d-flex ">
-        <table class="table bg-light">
+      <div class="col-md-10 d-flex">
+        <table class="table table-dark table-sm table-responsive-sm table-striped">
           <thead>
             <tr>
               <th scope="col">

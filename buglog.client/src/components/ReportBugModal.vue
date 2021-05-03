@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-group ml-5">
                   <label for="user name">Reported By</label>
-                  <h5>User Name</h5>
+                  <h5>{{ state.user.name }}</h5>
                 </div>
               </div>
               <div class="form-group">

@@ -28,6 +28,12 @@ class BugsService {
     this.getBugById(id)
     this.getAllBugs()
   }
+
+  async editBug(newBug) {
+    delete newBug.closed
+    await api.put(`api/bugs/${newBug.id}`, newBug)
+    this.getBugById(newBug.id)
+  }
 }
 
 export const bugsService = new BugsService()

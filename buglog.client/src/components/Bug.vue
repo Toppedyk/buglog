@@ -3,7 +3,7 @@
     <th scope="row">
       {{ bug.title }}
     </th>
-    <td><img :src="bug.creator.picture" alt="creator image" class="rounded-circle small-img mr-2">{{ bug.creator.name }}</td>
+    <td><img :src="bug.creator.picture" alt="creator image" class="rounded-circle img-fluid small-img mr-2">{{ bug.creator.name }}</td>
     <td>
       <p v-if="bug.closed==false">
         <span class="open">Open</span>
