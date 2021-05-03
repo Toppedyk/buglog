@@ -44,7 +44,7 @@
           <button type="button" class="btn btn-danger" @click="state.edit= false">
             Cancel
           </button>
-          <button type="button" class="btn btn-success ml-3" @click="editBug">
+          <button type="button" class="btn btn-dark ml-3" @click="editBug">
             Save Changes
           </button>
         </div>
@@ -53,7 +53,7 @@
     <div class="row mt-5">
       <div class="col d-flex">
         <h3>Notes</h3>
-        <button type="button" class="btn btn-success ml-4" data-toggle="modal" data-target="#CommentModal" v-if="state.user.isAuthenticated & state.activeBug.closed==false">
+        <button type="button" class="btn btn-dark ml-4" data-toggle="modal" data-target="#CommentModal" v-if="state.user.isAuthenticated & state.activeBug.closed==false">
           Add
         </button>
         <CommentModal />
@@ -61,7 +61,7 @@
     </div>
     <div class="row justify-content-center mt-3">
       <div class="col-10 d-flex">
-        <table class="table table-sm table-responsive-sm table-striped">
+        <table class="table table-sm table-responsive-sm table-striped table-dark">
           <thead>
             <tr>
               <th scope="col">
@@ -162,4 +162,9 @@ h3{
   font-size: 1rem;
 }
 }
+
+i{
+  cursor: pointer;
+}
+
 </style>

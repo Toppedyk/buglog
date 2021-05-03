@@ -7,7 +7,7 @@
   </main>
   <footer>
     <div class="bg-dark text-light text-center p-4">
-      Made with 💖 by CodeWorks
+      Buglog &copy; 2021 || LLC
     </div>
   </footer>
 </template>

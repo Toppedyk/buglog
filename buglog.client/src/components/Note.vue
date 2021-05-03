@@ -52,4 +52,8 @@ export default {
   object-fit: cover;
   max-height: 2rem;
 }
+
+i{
+  cursor: pointer;
+}
 </style>

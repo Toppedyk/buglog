@@ -1,5 +1,5 @@
 <template>
-  <tr class="Bug" @click="bugDetails">
+  <tr class="Bug" @click="bugDetails" title="Click to view bug details">
     <th scope="row">
       {{ bug.title }}
     </th>
@@ -61,6 +61,10 @@ export default {
 .small-img{
   object-fit: cover;
   max-height: 2rem;
+}
+
+.Bug{
+  cursor: pointer;
 }
 
 </style>
