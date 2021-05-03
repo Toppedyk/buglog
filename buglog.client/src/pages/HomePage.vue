@@ -1,18 +1,18 @@
 <template>
   <div class="home flex-grow-1 container-fluid">
-    <div class="row mt-3 ">
-      <div class="col-12 col-lg-6 d-flex justify-content-center">
+    <div class="row mt-3 title-row">
+      <div class="col-12 col-lg-6 d-flex justify-content-center mb-2">
         <div class="d-flex align-items-end">
           <h1 class="mb-0">
             Current Bugs
           </h1>
-          <button type="button" class="btn btn-dark ml-2" data-toggle="modal" data-target="#ReportBugModal">
+          <button type="button" class="btn btn-dark ml-4" data-toggle="modal" data-target="#ReportBugModal">
             Report
           </button>
           <ReportBugModal />
         </div>
       </div>
-      <div class="col-12 col-lg-6 d-flex justify-content-center align-items-end">
+      <div class="col-12 col-lg-6 d-flex justify-content-center align-items-end mb-2">
         <div class="d-flex align-items-baseline">
           <input type="checkbox" @change="filterBugs" v-if="state.elem === true" class="checkbox">
           <input type="checkbox" @change="filterBugs" v-else checked class="checkbox">
@@ -24,7 +24,7 @@
     </div>
     <div class="row justify-content-center mt-3">
       <div class="col-md-10 d-flex">
-        <table class="table table-dark table-sm table-responsive-sm table-striped table-hover">
+        <table class="mb-5 mt-3 table table-dark table-sm table-responsive-sm table-striped table-hover my-table">
           <thead>
             <tr>
               <th scope="col">
@@ -95,6 +95,21 @@ export default {
 .home{
   background-color: rgb(14, 0, 48);
   color: rgb(221, 221, 221);
+}
+
+@media(max-width: 600px){
+h1{
+  font-size: 2rem;
+}
+
+}
+.title-row{
+  border-bottom: 1px solid white;
+}
+
+.my-table{
+  border-left: 1px solid white;
+  border-right: 1px solid white;
 }
 
 .checkbox{

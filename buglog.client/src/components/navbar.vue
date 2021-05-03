@@ -95,7 +95,7 @@ export default {
 </script>
 
 <style scoped>
-.navbar-toggler{
+.navbar-toggler, .navbar-text{
 cursor: pointer;
 }
 .dropdown-menu {

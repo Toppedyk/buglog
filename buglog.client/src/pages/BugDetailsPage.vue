@@ -32,7 +32,7 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-10 border d-flex justify-content-center">
-        <p v-if="state.edit===false">
+        <p v-if="state.edit===false" class="description-content">
           {{ state.activeBug.description }}
         </p>
         <input type="text" class="my-2 w-100" v-model="state.newBug.description" v-else placeholder="New Description...">
@@ -157,6 +157,10 @@ export default {
   color:red;
 }
 
+.description-content{
+  font-size: 2.5rem;
+}
+
 .small-img{
   object-fit: cover;
   max-height: 2rem;
@@ -164,6 +168,10 @@ export default {
 @media(max-width: 600px){
 h1{
   font-size: 2rem;
+}
+.description-content{
+  font-size: 1rem;
+  overflow-wrap: break-word;
 }
 
 h3{
