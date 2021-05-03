@@ -4,7 +4,7 @@
   </div>
   <div class="BugDetailsPage container-fluid" v-else>
     <div class="row">
-      <div class="col-lg-6 col-12 d-flex flex-column mt-3">
+      <div class="col-lg-6 col-12 d-flex flex-column mt-3 pl-5">
         <div class="d-flex align-items-center">
           <h1 v-if="state.edit===false">
             {{ state.activeBug.title }}
@@ -15,7 +15,7 @@
           <p>Reported By: <img :src="state.activeBug.creator.picture" alt="Creators picture" class="rounded-circle small-img"> <span>{{ state.activeBug.creator.name }}</span></p>
         </div>
       </div>
-      <div class="col-xl-6 col-12 mt-4">
+      <div class="col-xl-6 col-12 mt-4 pl-5">
         <div v-if="state.activeBug.creator.id === state.account.id">
           <button type="button" class="btn btn-danger" @click="deleteBug" v-if="state.activeBug.closed==false">
             Close
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-10 border">
+      <div class="col-10 border d-flex justify-content-center">
         <p v-if="state.edit===false">
           {{ state.activeBug.description }}
         </p>
@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-    <div class="row mt-5">
+    <div class="row mt-5 pl-5">
       <div class="col d-flex">
         <h3>Notes</h3>
         <button type="button" class="btn btn-dark ml-4" data-toggle="modal" data-target="#CommentModal" v-if="state.user.isAuthenticated & state.activeBug.closed==false">
@@ -61,7 +61,10 @@
     </div>
     <div class="row justify-content-center mt-3">
       <div class="col-10 d-flex">
-        <table class="table table-sm table-responsive-sm table-striped table-dark">
+        <h4 v-if="state.notes.length === 0">
+          No Notes Yet...
+        </h4>
+        <table class="table table-sm table-responsive-sm table-striped table-dark" v-else>
           <thead>
             <tr>
               <th scope="col">
@@ -142,6 +145,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.BugDetailsPage{
+  background-color: rgb(14, 0, 48);
+  color: rgb(221, 221, 221);
+}
+
 .open{
   color: green
 }

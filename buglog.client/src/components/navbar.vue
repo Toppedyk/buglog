@@ -95,11 +95,15 @@ export default {
 </script>
 
 <style scoped>
+.navbar-toggler{
+cursor: pointer;
+}
 .dropdown-menu {
   user-select: none;
   display: block;
   transform: scale(0);
   transition: all 0.15s linear;
+  cursor: pointer;
 }
 .dropdown-menu.show {
   transform: scale(1);

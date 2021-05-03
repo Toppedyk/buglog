@@ -14,8 +14,8 @@
       </div>
       <div class="col-12 col-lg-6 d-flex justify-content-center align-items-end">
         <div class="d-flex align-items-baseline">
-          <input type="checkbox" @change="filterBugs" v-if="state.elem === true">
-          <input type="checkbox" @change="filterBugs" v-else checked>
+          <input type="checkbox" @change="filterBugs" v-if="state.elem === true" class="checkbox">
+          <input type="checkbox" @change="filterBugs" v-else checked class="checkbox">
           <p class="m-0 ml-2">
             Hide Closed
           </p>
@@ -24,7 +24,7 @@
     </div>
     <div class="row justify-content-center mt-3">
       <div class="col-md-10 d-flex">
-        <table class="table table-dark table-sm table-responsive-sm table-striped">
+        <table class="table table-dark table-sm table-responsive-sm table-striped table-hover">
           <thead>
             <tr>
               <th scope="col">
@@ -92,5 +92,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.home{
+  background-color: rgb(14, 0, 48);
+  color: rgb(221, 221, 221);
+}
 
+.checkbox{
+  cursor: pointer;
+}
 </style>

@@ -62,7 +62,7 @@ export default {
           state.newNote.bug = route.params.id
           await notesService.createNote(state.newNote, route.params.id)
           state.newNote = {}
-          $('#ReportBugModal').modal('hide')
+          $('#CommentModal').modal('hide')
           Notification.toast('Succesfully created', 'success')
         } catch (error) {
           Notification.error('Error: ' + error, 'error')
